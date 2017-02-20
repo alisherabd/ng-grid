@@ -1,0 +1,25 @@
+.data-grid {background-color:#D0D0D0;border:solid 1px #D0D0D0;border-collapse:collapse;color:#404080;font-family:Tahoma;font-size:9pt;table-layout:fixed;margin-top:5px;}
+.data-grid thead{overflow:hidden;}
+.data-grid thead tr{color:#404080;cursor:pointer;font-weight:700;}
+.data-grid thead td{border-bottom:1px solid #D0D0D0;border-right:1px solid #D0D0D0;cursor:pointer;overflow:hidden;text-align:center;text-decoration:none;text-overflow:ellipsis;white-space:nowrap;background-color:#e0eeff;padding:0 2px;}
+.data-grid tr{height:20px;}
+.data-grid tbody{overflow:auto;}
+.data-grid thead,.data-grid tbody{display:block;}
+.data-grid tbody td{border-bottom:1px solid #D0D0D0;border-right:1px solid #D0D0D0;cursor:pointer;overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;padding:0 2px;}
+.data-grid tbody td:first-child{background-color:#e8e8f4;color:#4040FF;font-size:8pt;}
+.data-grid tbody td:last-child{color:#4040FF;text-align:center;}
+.data-grid tbody tr:nth-child(odd){background-color:#FFF;}
+.data-grid tbody tr:nth-child(even){background-color:#F8F8F8;}
+.data-grid + div{background-color:#F8F8F8;color:#404040;font-family:Tahoma;font-size:8pt;height:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-color:#D0D0D0;border-style:solid;border-width:2px;margin:0 0 2px;padding:2px;}
+.errory-box{border:1px solid red;}
+.errory-box + .chosen-container .chosen-single{border:1px solid red!important;}
+.red-colory{color:red!important;margin-right:50px!important;}
+.blue-colory{color:blue!important;}
+.grey-colory{color:#c4c4c4!important;}
+.chosen-container ul.chosen-results li.highlighted{background-color:#e8e8f4;background-image:none;}
+.chosen-container-single .chosen-single,.ui-corner-all{border-radius:0;}
+.data-dialog td:first-child {text-align:right;font-size:9pt;font-weight:bold;color:#c4c4c4;}
+.data-dialog td:nth-child(2) {font-size:10pt;}
+.data-dialog td:last-child {color:red;font-size:8pt;} 
+.ui-widget-header {background-color: #e0eeff !important;background:none;font-size:10pt;}
+.small-btn {font-size: .8em !important;}

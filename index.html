@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+    
+<link rel="stylesheet" href="style.css" />
+
+   <script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script  type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+    <script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="datagrid.js"></script>
+    <script src="controller.js"></script>
+  </head>
+
+  <body ng-app="my-app">
+    <div ng-controller="my-ctrl" ng-init="init()" > 
+
+
+          <div table-grid="" df ="df1" table="table1" config="config1" dropmenu="dropmenu1"></div>
+        
+          
+          <button ng-click="view()">Select</button>
+          <button ng-click="viewnone()">Unselect</button>
+  
+    </div>
+  </body>
+
+</html>

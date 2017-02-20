@@ -1,0 +1,77 @@
+<table class="data-grid" ng-cloak ng-style="{width:config.config.width}">
+  <thead>
+    <tr>
+      <td ng-style="{'min-width':'25px','max-width':'25px'}">#</td>
+      <td ng-style="{'min-width':c.width+'px','max-width':c.width+'px'}" ng-repeat="c in config.table" ng-cloak>{{c.header}}</td>
+      <td ng-style="{'min-width':'30px','max-width':'30px'}"></td>
+    </tr>
+  </thead>
+  <tbody ng-style="{height:config.config.height}">
+    <tr ng-repeat="i in table.index">
+      <td ng-style="{'min-width':'25px','max-width':'25px'}">{{i}}</td>
+      <td ng-style="{'min-width':c.width+'px','max-width':c.width+'px','color':table[c.dcolor][i-1]||c.color,'text-align':c.align}" ng-repeat="c in config.table" ng-cloak>{{table[c.mask || c.map][i-1]}}</td>
+      <td ng-style="{'min-width':'30px','max-width':'30px'}">
+        <a ng-show="config.config.edit" ng-click="editHandler(i-1)">Edit</a>
+      </td>
+    </tr>
+    <tr ng-show="config.config.edit">
+      <td ng-style="{'min-width':'25px','max-width':'25px'}">
+        <a ng-click="editHandler(-1)">New</a>
+      </td>
+      <td ng-style="{'min-width':c.width+'px','max-width':c.width+'px'}" ng-repeat="c in config.table" ng-cloak></td>
+      <td ng-style="{'min-width':'30px','max-width':'30px'}">
+        <a ng-click="editHandler(-1)">New</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  <div ng-style="{width:config.config.width-8}">
+        &nbsp;&nbsp;&nbsp;Total: <b><span style="color:#0000FF">{{table.RowCount||0}}</span></b>
+        <span ng-repeat="c in config.config.footer">
+          &nbsp;&nbsp;&nbsp;{{c.name}}:<b  ng-style="{color:c.color}"> {{df['footer'+$index] || 0}}</b>
+        </span>
+        
+    </div>
+
+<div class="dialog-{{config.config.id}}">
+  <form name="gridfrm" ng-submit="onSubmit()" novalidate="novalidate">
+    <table class="data-dialog">
+      <tbody>
+        <tr ng-repeat="c in config.table" ng-hide="c.hidden">
+          <td ng-cloak>{{c.header}}:</td>
+          <td>
+            <tt ng-switch="c.type">
+              <tt ng-switch-when="text"><input ng-style="{'width':c.ewidth?c.ewidth+'px':'220px'}" ng-cloak type="text" ng-model="df[c.map]" ng-required="c.required"  ng-class="{'errory-box':gridfrm[c.map].$invalid || df['dt'+$index]}" name="{{c.map}}" ng-readonly="c.readonly" /></tt>
+            <tt ng-switch-when="drop"><select ng-style="{'width':c.ewidth?c.ewidth+'px':'220px'}" chosen class='chosen-select-no-results' data-placeholder='Select...'   ng-model="df[c.map]" ng-required="c.required" ng-class="{'errory-box':gridfrm[c.map].$invalid  || df['dt'+$index]}" name="{{c.map}}"  ng-readonly="c.readonly" ng-options="opt as opt.label for opt in dropmenu[c.drop]"></select></tt>
+            <tt ng-switch-when="date"><input ng-style="{'width':c.ewidth?c.ewidth+'px':'220px'}" type="text" datepicker ng-model="df[c.map]" ng-required="c.required"  ng-class="{'errory-box':gridfrm[c.map].$invalid || df['dt'+$index]}" name="{{c.map}}"  ng-readonly="c.readonly"/></tt>
+            <tt ng-switch-when="textarea"><textarea  ng-style="{'width':c.col?'none':'220px'}" rows="{{c.row || 3}}" cols="{{c.col || 20}}" ng-model="df[c.map]" ng-required="c.required" ng-class="{'errory-box':gridfrm[c.map].$invalid || df['dt'+$index]}" name="{{c.map}}"  ng-readonly="c.readonly"></textarea></tt>
+            <tt ng-switch-when="label"> {{df[c.map]}}</tt>
+            </tt>
+          </td>
+          <td>{{(df['dt'+$index]?'*':'')}}{{  df['dt'+$index]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <br>
+    <br>
+    <span ng-style="{'color':'red','font-size':'8pt'}">{{df['dterror']}}</span>
+    <span ng-style="{'color':'blue','font-size':'8pt'}">{{df['dtmessage']}}</span>
+
+    <div style="position: absolute; 
+                bottom: 0; 
+                width: 90%;" class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <div class="ui-dialog-buttonset">
+        <button type="submit" ng-click="rm=true" ng-class="{'red-colory':!isNew,'grey-colory':isNew}" ng-disabled="isNew" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only small-btn" role="button" aria-disabled="false">
+          <span class="ui-button-text ">Remove</span></button>
+        <button type="submit" ng-click="rm=false" ng-disabled="gridfrm.$invalid" ng-class="{'blue-colory':!gridfrm.$invalid,'grey-colory':gridfrm.$invalid}" class="ui-button ui-widget ui-state-default small-btn ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+          <span class="ui-button-text">Save</span></button>
+        <button ng-click="closeDialog()" type="button" class="ui-button ui-widget ui-state-default small-btn ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+          <span class="ui-button-text">Close</span></button>
+      </div>
+    </div>
+
+  </form>
+
+
+</div>
